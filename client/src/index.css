@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Page/Component Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Staggered List Animation */
+.animate-stagger-in > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Loading Spinner Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-left-color: #3b82f6; /* blue-500 */
+  border-radius: 50%;
+  width: 3rem; /* w-12 */
+  height: 3rem; /* h-12 */
+  animation: spin 1s linear infinite;
+}
+
+/* Credit Card 3D Effect */
+.payment-card-container {
+  perspective: 1000px;
+}
+.payment-card {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+.payment-card-container:hover .payment-card {
+  transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+}
