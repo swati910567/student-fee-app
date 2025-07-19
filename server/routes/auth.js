@@ -1,13 +1,12 @@
-// server/routes/auth.js
 const express = require("express");
-const authRouter = express.Router();
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Student = require("../models/Student");
 
 // @route   POST api/auth/register
 // @desc    Register a new student
-authRouter.post("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
     let student = await Student.findOne({ email });
@@ -40,7 +39,7 @@ authRouter.post("/register", async (req, res) => {
 
 // @route   POST api/auth/login
 // @desc    Authenticate student & get token
-authRouter.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     let student = await Student.findOne({ email });
@@ -69,4 +68,4 @@ authRouter.post("/login", async (req, res) => {
   }
 });
 
-module.exports = authRouter;
+module.exports = router;
